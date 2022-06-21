@@ -31,3 +31,5 @@ export const getarticlebytaglimit=(tag,start,num)=>get('/getarticlebytaglimit',{
 // 上面会造成文章重复加载的问题
 // 更改的思路是，先全部加载，然后再在前端去操作加载的内容
 export const getallarticle=()=>get('/getallarticle')
+// 获取搜索的文章的内容
+export const getsearch=(text)=>get('/getsearch',{text:text})

@@ -29,11 +29,11 @@
                 </div>
             </div>
             <div class="typenav">
-                <div class="categorynav" @click="changetypepage('category',info.category)">
+                <div class="categorynav clearfix" @click="changetypepage('category',info.category)">
                     <i class="iconfont icon-sucai"></i>
                     <span>{{info.category}}</span>
                 </div>
-                <div class="tagnav" @click="changetypepage('tag',info.tag)">
+                <div class="tagnav clearfix" @click="changetypepage('tag',info.tag)">
                     <i class="iconfont icon-biaoqian" ></i>
                     <span>{{info.tag}}</span>
                 </div>
@@ -43,8 +43,10 @@
                         <div class="prevtitlename"><span>{{pre[0].title}}</span></div>
                     </div>
                     <div class="nextbotton" v-if="next.length" @click="changepage(next[0].uid)">
-                        <div class="nexttag"><span>next</span></div>
-                        <div class="nexttitlename"><span>{{next[0].title}}</span></div>
+                        <div class="nextcontent">
+                            <div class="nexttag"><span>next</span></div>
+                            <div class="nexttitlename"><span>{{next[0].title}}</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -152,10 +154,10 @@ img{
 </style>
 <style lang="scss" scoped>
 .page{
-    min-width: 500px;
-    width: 100%;
-    max-width: 1000px;
-    padding: 42px 40px;
+    width: 90%;
+    // max-width: 1000px;
+    margin: 0 auto;
+    padding: 42px 0;
 }
 
 .head{
@@ -163,7 +165,7 @@ img{
 }
 .articletitle{
     display: flex;
-    height: 60px;
+    min-height: 60px;
     justify-content: center;
     align-items: center;
     .titlestyle{
@@ -180,8 +182,9 @@ img{
     color: gray;
 }
 .htmlcontent{
-    max-width:100%;
-    height:auto
+    // max-width:100%;
+    width: 90%;
+    height:auto;
     // clear: both;
 }
 .foot{
@@ -190,7 +193,7 @@ img{
 }
 .relatetag{
     width: 40px;
-    height: 30px;
+    min-height: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -208,20 +211,20 @@ img{
     font-size: 12px;
 }
 .relateitem{
-    flex: 0 0 calc(100%/3);
+    flex: 1 1;
     color: grey;
     .itemtitle{
-        height: 20px;
+        min-height: 20px;
         cursor: pointer;
         &:hover{
             text-decoration:underline
         }
     }
     .itemtime{
-        height: 20px;
+        min-height: 20px;
     }
     .itemcategory{
-        height: 20px;
+        min-height: 20px;
     }
 }
 .typenav{
@@ -248,57 +251,49 @@ img{
 .prevnext{
     width: 100%;
     padding: 20px 0 0;
-    position: relative;
+    display: flex;
     // justify-content: flex-end;
     height: 50px;
-    
 }
 .prevbotton{
-    position: absolute;
-    left: 0;
-    flex: 0 1 50%;
-    display: flex;
-    flex-wrap: wrap;
-    // align-self: flex-start;
+    flex: 1 1 50%;
     cursor: pointer;
-    .prevtag{
-        width: 100%;
-        
-    }
-    .prevtitlename{
-        font-size: 16px;
-        span{
-            font-weight: bold;
-        }
+    span{
+        font-weight: bold;
     }
     &:hover{
         color: black;
     }
-
 }
 .nextbotton{
-    position: absolute;
-    right: 0;
-    flex: 0 1 50%;
-    flex-wrap: wrap;
-    align-self: flex-end;
+    flex: 1 1 50%;
     cursor: pointer;
-    .nexttag{
+    display: flex;
+    justify-content: flex-end;
+    .nextcontent{
         display: flex;
-        width: 100%;
-        justify-content: flex-end;
+        flex-direction: column;
+        align-content: flex-end;
+        .nexttag{
+            display: flex;
+            justify-content: flex-end;
+        }
     }
-    .nexttitlename{
-        display: flex;
-        font-size: 16px;
-        width: 100%;
-        justify-content: flex-end;  
-        span{
-            font-weight: bold;
-        }      
+    span{
+        font-weight: bold;
     }
     &:hover{
         color: black;
     }
+}
+
+.clearfix:after{
+    content: '\20';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.clearfix{
+    zoom: 1;
 }
 </style>

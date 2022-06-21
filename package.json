@@ -8,13 +8,18 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "element-plus": "^2.2.6",
     "pinia": "^2.0.13",
     "qs": "^6.10.3",
     "vue": "^3.2.31",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "vue-xss": "^1.0.4",
+    "xss": "^1.0.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",
+    "unplugin-auto-import": "^0.8.8",
+    "unplugin-vue-components": "^0.19.6",
     "vite": "^2.9.1"
   }
 }

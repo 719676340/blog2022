@@ -1,7 +1,9 @@
 <template>
   <div class='figuretitlecontent'>
-    <div v-show="showimg" class="firstimg" @click="changepage()">
-        <img  class="imgcontent" :src="imgpath" alt="" srcset="">
+    <div class="imgout">
+        <div v-show="showimg" class="firstimg" @click="changepage()">
+            <img class="imgcontent" :src="imgpath" alt="" srcset="">
+        </div>
     </div>
     <div class="titleword" >
         <div class="articletitle" @click="changepage()">
@@ -65,7 +67,6 @@ var showtime=computed(()=>{
 // const testtittle='文章名字文章名字文章名字文章名字文章名字文章名字文章名字文章名字文章名字文章名字文章名字文章名字'
 
 // const articlecontent='文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容'
-
 function changepage(){
     router.push('/'+props.uid)
 }
@@ -80,6 +81,10 @@ onMounted(()=>{
     border-bottom: 1px solid gray;
     margin-bottom: 5px;
 }
+.imgout{
+    margin:0 auto;
+    width: 60%;
+}
 .firstimg{
   width: 100%;
   height: 0;
@@ -92,6 +97,8 @@ onMounted(()=>{
   display: block;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
   position: absolute;
 }
 .titleword{
@@ -119,6 +126,7 @@ onMounted(()=>{
 }
 .articleintroduction{
     margin-top: 21px;
+    max-height: 300px;
     font-size: 18px;
     line-height: 1.75;
     color: gray;

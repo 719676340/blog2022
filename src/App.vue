@@ -4,9 +4,11 @@
       <div class="logocontent" @click="gohome">
         <img class="logoimg" src="https://s1.ax1x.com/2022/04/15/LG6p7R.jpg" alt="" srcset="">
       </div>
-      <CategoryNav style="width: 20px;height: 300px;"></CategoryNav>
+      <CategoryNav class="category"></CategoryNav>
     </div>
-    <div class="viewcontent"><router-view :key="route.fullPath"></router-view></div>
+    <div class="viewcontent">
+      <router-view :key="route.fullPath"></router-view>
+    </div>
   </div>
   <!-- <FigureTitle style="width: 100px;"></FigureTitle> -->
   <!-- <ArticlePage style="width: 600px;"></ArticlePage> -->
@@ -32,114 +34,59 @@ function gohome(){
 
 </script>
 <style lang="scss" scoped>
+
 .appcontent{
-  // display: flex;
-  min-width: 500px;
-  position: relative;
-  // overflow: hidden;
+  display: flex;
+  height: 100vh;
+  overflow-y: hidden;
 }
 .nav{
-  // width: 270px;
   z-index: 100;
-  position: fixed;
-  top: 0;
-  left: 0;
   height: 100vh;
   box-shadow: 1px 0 5px rgb(205, 205, 205);
 }
-.navcontent{
-
-}
-// .logocontent{
-//   width: 100%;
-//   height: 0;
-//   padding-bottom: 60%;
-//   overflow: hidden;
-//   position: relative;
-//   margin: 0px 0 200px;
-//   cursor: pointer;
-// }
-// .logoimg{
-//   display: block;
-//   width: 100%;
-//   height: 100%;
-//   position: absolute;
-// }
 .viewcontent{
-  position: absolute;
-  top: 0;
-  display: flex;
-  justify-content: center;
-}
-@media screen and (min-width:1300px){
-.nav{
-  width: 270px;
-}
-.viewcontent{
-  left: 270px;
-  width: calc(100%  - 270px);
-  // height: 100vh;
+  flex: 1 1 750px;
+  overflow-y: scroll;
 }
 .logocontent{
-  width: 100%;
-  height: 0;
-  padding-bottom: 60%;
-  overflow: hidden;
-  position: relative;
-  margin: 0px 0 200px;
   cursor: pointer;
 }
-.logoimg{
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-}
-@media screen and (min-width:1100px) and (max-width: 1300px){
+@media screen and (min-width: 750px){
 .nav{
   width: 250px;
 }
-.viewcontent{
-  left: 250px;
-  width: calc(100%  - 250px);
 }
-.logocontent{
-  width: 100%;
-  height: 0;
-  padding-bottom: 60%;
-  overflow: hidden;
-  position: relative;
-  margin: 0px 0 200px;
-  cursor: pointer;
-}
-.logoimg{
-  display: block;
-  width: 100%;
+@media screen and (max-width: 750px){
+.appcontent{
+  // display: flex;
   height: 100%;
-  position: absolute;
+  flex-wrap: wrap;
+  overflow:auto;
 }
-}
-@media screen and (max-width: 1100px){
 .nav{
   width: 100%;
+  height: 400px;
+  // aspect-ratio: auto 1 / 2;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position:relative;
-  height: 400px;
 }
 .logocontent{
-  // overflow: hidden;
-  width: 250px;
-  height: 250px;
+  flex: 1 1;
+}
+.category{
+  flex: 1 1;
 }
 .logoimg{
-  width: 100%;
-  height: 100%;
+  width: 75%;
+  height: 75%;
+  // aspect-ratio:1;
+  
 }
 .viewcontent{
-  position: relative;
+  // width: 100%;
+  overflow-y: auto;
 }
 }
 </style>

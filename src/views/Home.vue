@@ -1,13 +1,11 @@
 <template>
   <div class='homecontent'>
-      <div class="outsize">
-        <div class="homepictrue">
-          <img class="pictruecontent" :src="testimgurl" alt="">
-          <div class="dowmsign">
-              <i class="iconfont icon-xiangxiajiantou"></i>
-          </div>
-        </div>
+    <div class="homepictrue">
+      <img class="pictruecontent" :src="testimgurl" alt="">
+      <div class="dowmsign">
+          <i class="iconfont icon-xiangxiajiantou"></i>
       </div>
+    </div>
     <div class="slogan"><span>小何的工作和生活</span></div> 
       <div class="articlelist">
         <div class="articleitem" v-for="(item, index) in items" :key="index">
@@ -61,7 +59,8 @@ function getallissue(){
     issuelist.push(...res.filter((item)=>{
       return item.showsign==0
     }))
-    console.log(res)
+    issuelist.reverse()
+    // console.log(res)
     items.push(...issuelist.slice(items.length,5))
   }).catch((err)=>{
     console.log(err)
@@ -99,16 +98,22 @@ onBeforeUnmount(() => {
 })
 </script>
 <style lang="scss" scoped>
+.homecontent{
+  width: 100%;
+  overflow: auto;
+}
 .homepictrue{
   width: 100%;
   height: 100vh;
 //   padding-bottom: 60%;
-//   overflow: hidden;
+  overflow: hidden;
   position: relative; 
 }
 .pictruecontent{
     // position: absolute;
-    width: 100%;
+    width: 100%; 
+    object-fit:cover; 
+    // width: auto;
     height: 100%;
 }
 .dowmsign{
@@ -129,6 +134,7 @@ onBeforeUnmount(() => {
     justify-content: center;
     align-items: center;
     height: 60px;
+    // height: 60/3.75vw;
     padding-bottom: 50px;
     font-size: 40px;
     span{

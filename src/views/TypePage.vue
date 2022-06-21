@@ -18,7 +18,7 @@
 <script setup>
 import { onMounted, reactive, ref,onBeforeUnmount} from 'vue';
 import { useRouter, useRoute } from 'vue-router'
-import {categorylist,getarticlebytaglimit,getarticlebycategorylimit,getarticlebycategory,getarticlebytag} from '../api/index';// 导入我们的api接口
+import {categorylist,getarticlebytaglimit,getarticlebycategorylimit,getarticlebycategory,getarticlebytag,getsearch} from '../api/index';// 导入我们的api接口
 import FigureTitle from '../components/FigureTitle.vue';
 const router = useRouter()
 const route = useRoute()
@@ -79,21 +79,34 @@ function getallissue(){
           issuelist.push(...res.filter((item)=>{
             return item.showsign==0
           }))
-          console.log(res)
+          issuelist.reverse()
+          // console.log(res)
           list.push(...issuelist.slice(list.length,5))
         }).catch((err)=>{
           console.log(err)
         })
-    }else{
+    }else if(type.value=='tag'){
         getarticlebytag(name.value).then((res)=>{
           issuelist.push(...res.filter((item)=>{
             return item.showsign==0
           }))
-          console.log(res)
+          issuelist.reverse()
+          // console.log(res)
           list.push(...issuelist.slice(list.length,5))
         }).catch((err)=>{
           console.log(err)
         })        
+    }else if(type.value=='search'){
+        getsearch(name.value).then((res)=>{
+          issuelist.push(...res.filter((item)=>{
+            return item.showsign==0
+          }))
+          issuelist.reverse()
+          // console.log(res)
+          list.push(...issuelist.slice(list.length,5))
+        }).catch((err)=>{
+          console.log(err)
+        })
     }
 }
 
@@ -145,14 +158,22 @@ onBeforeUnmount(() => {
 </script>
 <style lang="scss" scoped>
 .typepagecontent{
-    min-width: 600px;
+    // min-width: 500px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
     padding: 120px 0 0;
 }
 .head{
     display: flex;
+    width: 100%;
+    // flex-basis: 100%;
     height: 70px;
     justify-content: center;
     align-items: center;
+    // flex-grow: 1;
     padding-bottom: 40px;
     font-size: 32px;
     span{
@@ -163,7 +184,9 @@ onBeforeUnmount(() => {
     overflow-x: scroll;
 }
 .articleitem{
-    max-width: 820px;
+  // flex-basis: 100%;
+  width: 100%;
+  // max-width: 820px;
 }
 .backtoTop{
     position: sticky;
